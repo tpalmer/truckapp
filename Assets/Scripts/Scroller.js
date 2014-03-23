@@ -3,10 +3,15 @@
 var speed : float;
 var xBound : int;
 
-function Update () {
+function Start () {
+}
+
+function FixedUpdate () {
+  var xPosition : float;
   if(transform.position.x <= xBound) {
-    transform.position = new Vector3 (transform.position.x + 1 * speed, transform.position.y, transform.position.z);
+    xPosition = transform.position.x;
   } else {
-    transform.position = new Vector3 (-xBound + 1 * speed, transform.position.y, transform.position.z);
+    xPosition = -xBound + speed;
   }
+  transform.position = new Vector3 (xPosition + speed, transform.position.y, transform.position.z);
 }
