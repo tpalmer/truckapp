@@ -1,8 +1,11 @@
 ﻿#pragma strict
 
+@script RequireComponent(AudioSource)
+  
 var boost : Vector3;
 var home : Vector3;
 var boosting : boolean;
+var boostAudio : AudioClip; 
 
 function Start () {
 	home = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
@@ -29,6 +32,8 @@ function OnMouseDown () {
 	
 	var rb = GetComponent.<Rigidbody>();
 	rb.velocity = boost;
+  
+  AudioSource.PlayClipAtPoint(boostAudio, transform.position);
 }
 
 function OnMouseUp () {
